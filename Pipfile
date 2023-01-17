@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 datetime = "*"
 telebot = "*"
+gspread = "*"
 
 [dev-packages]
 
