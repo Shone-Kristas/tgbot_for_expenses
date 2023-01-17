@@ -69,5 +69,20 @@ ____
 
 11. В поле поиска "Search for APIs and Services", находим "Google Drive API" и "Google Sheets API" активируем их
 
+1. Остается только внести свои данные в код:
+
+   1. Вместо "my_token" - в ковычках, внести токен полученный при создании телеграм бота из Шаг№1
+   2. Вместо "my_googlesheet_id" - в ковычках, внести url скопированной таблицы из Шаг№2 п.6
+   3. Вместо '/home/nize/Загрузки/проги/tgbot_Расходы/my_acc.json' пути - прописать путь к вашему json файлу из Шаг№3 п.7
+   4. Удалить строку "from keys import my_token, my_googlesheet_id"
+```
+from keys import my_token, my_googlesheet_id
+
+bot_token = my_token
+googlesheet_id = my_googlesheet_id
+bot = telebot.TeleBot(bot_token)
+gc = gspread.service_account(filename='/home/nize/Загрузки/проги/tgbot_Расходы/my_acc.json')
+```
+
 
 
