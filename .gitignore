@@ -48,3 +48,4 @@ dist/**
 *.i18n.json
 keys.py
 my_acc.json
+my_data.txt

@@ -2,13 +2,12 @@ from datetime import date
 import telebot
 from telebot import types
 import gspread
-from keys import my_token, my_googlesheet_id
-
+from keys import my_token, my_googlesheet_id, path_to_file
 
 bot_token = my_token
 googlesheet_id = my_googlesheet_id
 bot = telebot.TeleBot(bot_token)
-gc = gspread.service_account(filename='/home/nize/Загрузки/проги/tgbot_Расходы/my_acc.json')
+gc = gspread.service_account(filename=path_to_file)
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
