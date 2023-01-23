@@ -1,0 +1,3 @@
+Token_for_TelegramBot
+GoogleSheets_URL
+Path_to_file
