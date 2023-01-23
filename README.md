@@ -20,7 +20,7 @@ ____
 
 Подробнее можно узнать пройдя по ссылке: https://sendpulse.com/ru/knowledge-base/chatbot/telegram/create-telegram-chatbot
 
-## Шаг №2. Создание Google Table.
+## Шаг №2. Создание Google Sheets.
 1. Войдите в свой Google Account
 2. Перейдите по ссылке: https://docs.google.com/spreadsheets/d/1dq9hVxhARG7Q-Ij78fEijACe0sLc58sHLMmf6dTJ-Lg/edit#gid=0
 3. Сделайте копию таблицы себе на Google account: Файл -> Создать копию -> Скопировать
@@ -31,7 +31,7 @@ ____
 ![](https://github.com/Shone-Kristas/tgbot_for_expenses/blob/master/images/1f6aff05-4815-4ba9-b96e-51d843e43bea.jpeg?raw=true)
 
 ## Шаг №3. Настройка Google API
-1. Заходим в <a href="https://console.developers.google.com/apis/dashboard" target="_blank" rel="nofollow noopener">консоль настройки Google API</a> и создаем проект
+1. Заходим в <a href="https://console.developers.google.com/apis/dashboard" target="_blank" rel="nofollow noopener">консоль настройки Google API</a> и создаем новый проект, с произвольным названием
 
 ![](https://github.com/Shone-Kristas/tgbot_for_expenses/blob/master/images/API_1.jpg?raw=true)
 
@@ -59,7 +59,7 @@ ____
 
 7. Выбираем формат "JSON", у скачанного файла меняем имя на более понятное для вас и запоминаем путь к нему
 8. Открываем сохраненный файл в виде блокнота, копируем "client_email"
-9. Заходим в Google Table и добавляем в "Настройки доступа" скопированный "client_email", с атрибутом "Редактор"
+9. Заходим в Google Sheets, выбираем нашу таблицу и добавляем в "Настройки доступа" скопированный "client_email", с атрибутом "Редактор"
 
 ![](https://github.com/Shone-Kristas/tgbot_for_expenses/blob/master/images/API_9.jpg?raw=true)
 
@@ -68,21 +68,20 @@ ____
 ![](https://github.com/Shone-Kristas/tgbot_for_expenses/blob/master/images/API_10.jpg?raw=true)
 
 11. В поле поиска "Search for APIs and Services", находим "Google Drive API" и "Google Sheets API" активируем их
+12. Клонируем репозиторий, используя команду "git clone https://github.com/Shone-Kristas/tgbot_for_expenses.git"
+13. Устанавливаем пакеты из файла "Pipfile.lock":
+    * Переходим в клонированный проект 
+    * Инициализируем виртуальную среду командой "pipenv shell"
+    * Устанавливаем пакеты "pipenv sync"
 
-12. Остается только внести свои данные в код:
-    * Вместо "my_token" - в кавычках, внести токен полученный при создании телеграм бота из Шаг№1
-    * Вместо "my_googlesheet_id" - в кавычках, внести url скопированной таблицы из Шаг№2 п.6
-    * Вместо '/home/nize/Загрузки/проги/tgbot_Расходы/my_acc.json' - прописать путь к вашему json файлу из Шаг№3 п.7
-    * Удалить строку "from keys import my_token, my_googlesheet_id"
+14. Остается только внести свои данные в файл "data.txt":
+    * Вместо "Token_for_TelegramBot" - без кавычек, внести токен полученный при создании телеграм бота из Шаг№1
+    * Вместо "GoogleSheets_URL" - без кавычек, внести url скопированной таблицы из Шаг№2 п.6
+    * Вместо "Path_to_file" - без кавычек, прописать путь к вашему json файлу из Шаг№3 п.7 (пример пути: /home/nize/Downloads/tgbot/service_account.json)
 
-```
-from keys import my_token, my_googlesheet_id
-
-bot_token = my_token
-googlesheet_id = my_googlesheet_id
-bot = telebot.TeleBot(bot_token)
-gc = gspread.service_account(filename='/home/nize/Загрузки/проги/tgbot_Расходы/my_acc.json')
-```
+## Как запустить бота
+1. В терминале перейдите в директорию склонированного проекта и выполните команду "python main.py"
+2. В приложении "Telegram" найдите созданного вами бота: Введите его никнейм из Шаг№1 п.5
 
 
 
